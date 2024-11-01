@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 from datetime import timedelta
 from pathlib import Path
-import dj_database_url
+# import dj_database_url
 import dotenv
 dotenv.load_dotenv()
 
@@ -91,8 +91,13 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 #     }
 # }
 
-DATABASES = {'default': dj_database_url.config(default=os.environ['DATABASE_URL'], engine='django.db.backends.postgresql')}
-
+# DATABASES = {'default': dj_database_url.config(default=os.environ['DATABASE_URL'], engine='django.db.backends.postgresql')}
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),  # Use SQLite database file
+    }
+}
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
@@ -128,7 +133,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIR = [
+STATICFILES_DIRS = [
     BASE_DIR / 'static',
     os.path.join(BASE_DIR, 'frontend/build/static'),
 ]

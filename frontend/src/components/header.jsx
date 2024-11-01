@@ -12,7 +12,7 @@ function Header({keyword,setKeyword}) {
       <Navbar bg="dark" variant="dark" expand="lg" collapseOnSelect>
         <Container className="">
           <LinkContainer to="/">
-            <Navbar.Brand>Proshop</Navbar.Brand>
+            <Navbar.Brand>TheCuriousCart</Navbar.Brand>
           </LinkContainer>
           <SearchBox keyword={keyword} setKeyword={setKeyword}/>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
